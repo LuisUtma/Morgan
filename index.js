@@ -7,6 +7,8 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import router from './routes/router.js';
 import verifyApiKey from './middlewares/verifyApiKey.js';
+// import morgan
+  import morgan from 'morgan';
 // TODO: Add SDKs for Firebase products that you want to use
 
 const app = express();
@@ -37,6 +39,7 @@ export const db = getFirestore(firebaseApp);
 const saltRounds = 15;
 
 app.use(cors());
+app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -46,7 +49,7 @@ app.use(verifyApiKey);
 
 // routes
 app.get('/', (req, res) => {
-  res.send('Hello world');
+  res.send('Hello world from render! Luis Enrique Perez Padilla \n');
 });
 
 
